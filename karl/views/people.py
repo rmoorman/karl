@@ -590,6 +590,18 @@ def get_profile_actions(profile, request):
         actions.append(('Advanced', '%sadvanced.html' % profile_url))
     return actions
 
+def api_profile_view(context, request):
+    photo = context.get('photo')
+    display_photo = None
+    if photo is not None:
+        display_photo = thumb_url(photo, request, PROFILE_THUMB_SIZE)
+    return dict(
+        firstname=context.firstname,
+        lastname=context.lastname,
+        email=context.email,
+        photo=display_photo
+    )
+
 def show_profile_view(context, request):
     """Show a profile with actions if the current user"""
     page_title = "Profile: %s" % context.title

@@ -1060,6 +1060,16 @@
     renderer="templates/profile.pt"
     />
 
+    <!-- TODO Replace name="api" with xhr, or <route> or @view_config -->
+  <view
+    for="karl.models.interfaces.IProfile"
+    name="api"
+    view=".people.api_profile_view"
+    permission="view_only"
+    renderer="json"
+    />
+
+
   <view
     for="karl.models.interfaces.IProfile"
     view=".people.profile_thumbnail"
